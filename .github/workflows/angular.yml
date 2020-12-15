@@ -1,35 +1,47 @@
-# GitHub Actions docs
-# https://help.github.com/en/articles/about-github-actions
-# https://help.github.com/en/articles/workflow-syntax-for-github-actions
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: '0 2 * * 5'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason'
+        required: false
+        default: 'Manual trigger'
+
 jobs:
-  build:
-    name: Build and Test
-    runs-on: ubuntu-latest
+  Tests:
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Use Node 12.x
+
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-      - name: Install dependencies
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install & Build
         run: npm ci
-      - name: Build
-        run: npm run build:ci
+
+      - name: Lint
+        run: npm run lint
+
       - name: Test
-        run: npm run test:ci
-      - name: Archive build
-        if: success()
-        uses: actions/upload-artifact@v1
-        with:
-          name: deploy_dist
-          path: dist
-      - name: Archive code coverage result
-        if: success()
-        uses: actions/upload-artifact@v1
-        with:
-          name: deploy_coverage
-          path: coverage
+        run: npm test
+
+      - name: Coverage
+        run: npm test -- --coverage
