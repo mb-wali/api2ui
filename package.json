@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test --watch=false --browsers=ChromeHeadless",
+    "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e --watch=false --browsers=ChromeHeadless"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
