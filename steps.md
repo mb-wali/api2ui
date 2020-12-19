@@ -4,18 +4,14 @@ api2ui is UI generator
 
 ## Steps
 
-install angular cli
+### Install angular cli
+**current version: 11.0.4**
 
 ```bash
 npm install -g @angular/cli
 ```
 
-angular cli version
-```bash
-angular/cli@11.0.4
-```
-
-create new project
+### Create new project
 ```angular
 ng new api
 ? Do you want to enforce stricter type checking and stricter bundle budgets in the workspace?
@@ -29,12 +25,13 @@ C:\Users\mb1990\Desktop\temp>ng new api2ui
 ? Which stylesheet format would you like to use? SCSS   [ https://sass-lang.com/documentation/syntax#scss
 ```
 
-run
+### Run
 ```angular
 ng serve
 ```
 
-### Angular material
+### Angular material 
+**current version: 11.0.3**
 
 ```bash
 ng add @angular/material
