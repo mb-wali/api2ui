@@ -33,3 +33,19 @@ run
 ```angular
 ng serve
 ```
+
+### Angular material
+
+```bash
+ng add @angular/material
+```
+
+```console
+Installing packages for tooling via npm.
+Installed packages for tooling via npm.
+? Choose a prebuilt theme name, or "custom" for a custom theme: Custom
+? Set up global Angular Material typography styles? Yes
+? Set up browser animations for Angular Material? Yes
+UPDATE package.json (1262 bytes)
+√ Packages installed successfully.
+```
