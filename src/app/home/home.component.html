@@ -13,3 +13,23 @@
       <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
     </div>
   </section>
+
+
+<!----Steps to connect-->
+<div class="main">
+
+  <mat-form-field appearance="legacy">
+    <!-- <mat-label>Select</mat-label> -->
+    <mat-select>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!--TODO: add spiner one clicked-->
+  <span class="button-center">
+    <button mat-raised-button>Connect</button>
+  </span>
+
+</div>
